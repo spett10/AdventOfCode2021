@@ -17,6 +17,7 @@ namespace AdventOfCode2021
 			var measurements = input.GetLinesInt<List<int>>();
 			var sonarscanner = new SonarScanner(measurements);
 			Console.WriteLine($"measurement increases = {sonarscanner.IncreaseCount()}");
+			Console.WriteLine($"sliding window increases = {sonarscanner.SumOfThreeSlidingWindowCount()}");
 		}
 	}
 }
