@@ -47,6 +47,12 @@ namespace AdventOfCode2021
 			var readings = input.GetLinesString<List<string>>();
 			var diagnostics = new BinaryDiagnostic(readings);
 			Console.WriteLine($"power consumption input = {diagnostics.PowerConsumption()}");
+
+			var testLifeSupportReadings = new BinaryDiagnostic(testReadings).LifeSupportRating();
+			Console.WriteLine($"life support rating test data = {testLifeSupportReadings}");
+
+			var lifeSupportRating = new BinaryDiagnostic(readings).LifeSupportRating();
+			Console.WriteLine($"life support rating = {lifeSupportRating}");
 		}
 	}
 }
