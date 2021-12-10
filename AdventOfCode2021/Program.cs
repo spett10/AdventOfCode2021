@@ -1,6 +1,7 @@
 ﻿using AdventOfCode2021.Day1;
 using AdventOfCode2021.Day2;
 using AdventOfCode2021.Day3;
+using AdventOfCode2021.Day4;
 using System;
 using System.Collections.Generic;
 
@@ -10,30 +11,18 @@ namespace AdventOfCode2021
 	{
 		static void Main(string[] args)
 		{
-			Day3();
+			Day4();
 		}
 
-		private static void Day1()
+		private static void Day4()
 		{
-			var input = new Input(@"Day1/input.txt");
-			var measurements = input.GetLinesInt<List<int>>();
-			var sonarscanner = new SonarScanner(measurements);
-			Console.WriteLine($"measurement increases = {sonarscanner.IncreaseCount()}");
-			Console.WriteLine($"sliding window increases = {sonarscanner.SumOfThreeSlidingWindowCount()}");
-		}
+			var testBingoSubSystem = new BingoSubSystem(@"Day4/testdata.txt");
+			var testScore = testBingoSubSystem.PlayUntilFirstBoardWinsAndReportScore();
+			Console.WriteLine($"test bingo board calculated score: {testScore}");
 
-		private static void Day2()
-		{
-			var testdata = new Input(@"Day2/testdata.txt");
-			var testCommands = testdata.GetLinesString<List<string>>();
-			var testpilot = new Pilot(testCommands);
-			Console.WriteLine($"test position = {testpilot.Navigate()}");
-
-			var input = new Input(@"Day2/input.txt");
-			var commands = input.GetLinesString<List<string>>();
-			var pilot = new Pilot(commands);
-			Console.WriteLine($"position = {pilot.Navigate()}");
-			Console.WriteLine($"aim = {pilot.Aim()}");
+			var bingoSubSystem = new BingoSubSystem(@"Day4/input.txt");
+			var score = bingoSubSystem.PlayUntilFirstBoardWinsAndReportScore();
+			Console.WriteLine($"bingo board calculated score: {score}");
 		}
 
 		private static void Day3()
@@ -53,6 +42,29 @@ namespace AdventOfCode2021
 
 			var lifeSupportRating = new BinaryDiagnostic(readings).LifeSupportRating();
 			Console.WriteLine($"life support rating = {lifeSupportRating}");
+		}
+
+		private static void Day2()
+		{
+			var testdata = new Input(@"Day2/testdata.txt");
+			var testCommands = testdata.GetLinesString<List<string>>();
+			var testpilot = new Pilot(testCommands);
+			Console.WriteLine($"test position = {testpilot.Navigate()}");
+
+			var input = new Input(@"Day2/input.txt");
+			var commands = input.GetLinesString<List<string>>();
+			var pilot = new Pilot(commands);
+			Console.WriteLine($"position = {pilot.Navigate()}");
+			Console.WriteLine($"aim = {pilot.Aim()}");
+		}
+
+		private static void Day1()
+		{
+			var input = new Input(@"Day1/input.txt");
+			var measurements = input.GetLinesInt<List<int>>();
+			var sonarscanner = new SonarScanner(measurements);
+			Console.WriteLine($"measurement increases = {sonarscanner.IncreaseCount()}");
+			Console.WriteLine($"sliding window increases = {sonarscanner.SumOfThreeSlidingWindowCount()}");
 		}
 	}
 }
