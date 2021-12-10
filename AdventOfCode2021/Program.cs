@@ -20,9 +20,13 @@ namespace AdventOfCode2021
 			var testScore = testBingoSubSystem.PlayUntilFirstBoardWinsAndReportScore();
 			Console.WriteLine($"test bingo board calculated score: {testScore}");
 
-			var bingoSubSystem = new BingoSubSystem(@"Day4/input.txt");
-			var score = bingoSubSystem.PlayUntilFirstBoardWinsAndReportScore();
+			var bingoSubSystemPart1 = new BingoSubSystem(@"Day4/input.txt");
+			var score = bingoSubSystemPart1.PlayUntilFirstBoardWinsAndReportScore();
 			Console.WriteLine($"bingo board calculated score: {score}");
+
+			var bingoSubSystemPart2 = new BingoSubSystem(@"Day4/input.txt");
+			var lastWinnerScore = bingoSubSystemPart2.PlayUntilLastBoardWinsAndReportScore();
+			Console.WriteLine($"bingo board last board score: {lastWinnerScore}");
 		}
 
 		private static void Day3()

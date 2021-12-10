@@ -9,15 +9,19 @@ namespace AdventOfCode2021.Day4
 		private readonly bool[][] _checks;
 		private int rowCount;
 
+		public bool WonAlready { get; private set; }
+
 		public int Score { get; private set; }
 
 		public BingoBoard(int numberOfRows)
 		{
 			_board = new int[numberOfRows][];
 			_checks = new bool[numberOfRows][];
+
 			rowCount = 0;
 
 			Score = 0;
+			WonAlready = false;
 		}
 
 		public void AddRow(string row)
@@ -31,6 +35,8 @@ namespace AdventOfCode2021.Day4
 
 		public bool MarkAndCheck(int number)
 		{
+			if (WonAlready) return true;
+
 			for(int rows = 0; rows < _board.Length; rows++)
 			{
 				for (int j = 0; j < rowCount; j++)
@@ -46,6 +52,7 @@ namespace AdventOfCode2021.Day4
 
 			if (winning)
 			{
+				WonAlready = true;
 				Score = number * SumAllUnmarked();
 			}
 

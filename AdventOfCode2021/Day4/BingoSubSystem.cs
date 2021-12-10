@@ -59,5 +59,33 @@ namespace AdventOfCode2021.Day4
 			return 0;
 		}
 
+		public int PlayUntilLastBoardWinsAndReportScore()
+		{
+			var boardCount = _boards.Count();
+			var boardsWon = 0;
+
+			foreach(var number in _numbers)
+			{
+				foreach(var board in _boards)
+				{
+					if (board.WonAlready) continue;
+
+					var won = board.MarkAndCheck(number);
+					if (won)
+					{
+						boardsWon++;
+
+						if(boardsWon == boardCount)
+						{
+							/* Last board finally won */
+							return board.Score;
+						}
+					}
+				}
+			}
+
+			return 0;
+		}
+
 	}
 }
