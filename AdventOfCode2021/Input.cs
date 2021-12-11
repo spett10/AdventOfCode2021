@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+
 namespace AdventOfCode2021
 {
 	class Input
@@ -32,6 +34,22 @@ namespace AdventOfCode2021
 			foreach(var line in lines)
 			{
 				result.Add(line);
+			}
+
+			return result;
+		}
+
+		public T GetSplitInt<T>() where T : ICollection<int>, new()
+		{
+			var result = new T();
+
+			var line = File.ReadAllLines(_inputFileName).First();
+
+			var numbers = line.Split(",").Select(x => Convert.ToInt32(x));
+
+			foreach(var number in numbers)
+			{
+				result.Add(number);
 			}
 
 			return result;

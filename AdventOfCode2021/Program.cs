@@ -3,6 +3,7 @@ using AdventOfCode2021.Day2;
 using AdventOfCode2021.Day3;
 using AdventOfCode2021.Day4;
 using AdventOfCode2021.Day5;
+using AdventOfCode2021.Day6;
 using System;
 using System.Collections.Generic;
 
@@ -15,7 +16,20 @@ namespace AdventOfCode2021
 
 		static void Main(string[] args)
 		{
-			Day5();
+			Day6();
+		}
+
+		private static void Day6()
+		{
+			var testData = new Input(@"Day6/testdata.txt").GetSplitInt<List<int>>();
+			var testLanternFish = new LanternFish(testData);
+			var testDataFishCount = testLanternFish.SimulateDaysAndCountFish(80);
+			Console.WriteLine($"test data fish count: {testDataFishCount}");
+
+			var input = new Input(@"Day6/input.txt").GetSplitInt<List<int>>();
+			var lanternFish = new LanternFish(input);
+			var fishCount = lanternFish.SimulateDaysAndCountFish(80);
+			Console.WriteLine($"fish count: {fishCount}");
 		}
 
 		private static void Day5()
