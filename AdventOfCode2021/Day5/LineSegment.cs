@@ -39,11 +39,6 @@ namespace AdventOfCode2021.Day5
 
 		private List<Point> GetPoints()
 		{
-			if(!_horizontal && !_vertical)
-			{
-				return new List<Point>();
-			}
-
 			if(_horizontal && _vertical)
 			{
 				return new List<Point> { First };
@@ -64,6 +59,47 @@ namespace AdventOfCode2021.Day5
 				for(int x = Math.Min(First.X, Second.X); x <= Math.Max(First.X, Second.X); x++)
 				{
 					coveredPoints.Add(new Point(x, First.Y));
+				}
+			}
+
+			/* Diagonal */
+			if (!_horizontal && !_vertical)
+			{
+				Point startingPoint;
+				Point endingPoint;
+
+				if(First.X < Second.X)
+				{
+					startingPoint = First;
+					endingPoint = Second;
+				}
+				else
+				{
+					startingPoint = Second;
+					endingPoint = First;
+				}
+
+				bool yAscending = false;
+
+				if(startingPoint.Y < endingPoint.Y)
+				{
+					yAscending = true;
+				}
+
+				var y = startingPoint.Y;
+				for(int x = startingPoint.X; x <= endingPoint.X; x++)
+				{
+					coveredPoints.Add(new Point(x, y));
+
+					if (yAscending)
+					{
+						y++;
+					}
+					else
+					{
+						y--;
+					}
+
 				}
 			}
 

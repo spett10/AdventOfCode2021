@@ -22,13 +22,17 @@ namespace AdventOfCode2021
 		{
 			var testdata = new Input(@"Day5/testdata.txt").GetLinesString<List<string>>();
 			var testDiagram = new Diagram(testdata);
-			var testdataOverlappingPoints = testDiagram.Overlaps();
-			Console.WriteLine($"test data overlapping points : {testdataOverlappingPoints}");
+			var testOverlappingStraightOnly = testDiagram.OverlapsStraightOnly();
+			Console.WriteLine($"test data overlapping points straight only: {testOverlappingStraightOnly}");
+			var testDataAllPoint = testDiagram.OverlapsAllLines();
+			Console.WriteLine($"test data all points : {testDataAllPoint}");
 
 			var input = new Input(@"Day5/input.txt").GetLinesString<List<string>>();
 			var diagram = new Diagram(input);
-			var overlappingPoints = diagram.Overlaps();
-			Console.WriteLine($"overlapping points : {overlappingPoints}");
+			var overlappingStraightOnly = diagram.OverlapsStraightOnly();
+			Console.WriteLine($"overlapping points straight only : {overlappingStraightOnly}");
+			var overlappingAll = diagram.OverlapsAllLines();
+			Console.WriteLine($"overlapping all : {overlappingAll}");
 		}
 
 		private static void Day4()

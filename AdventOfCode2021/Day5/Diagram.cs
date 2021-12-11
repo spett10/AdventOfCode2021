@@ -46,7 +46,19 @@ namespace AdventOfCode2021.Day5
 			BottomRight = new Point(maxX, maxY);
 		}
 
-		public int Overlaps()
+		public int OverlapsAllLines()
+		{
+			var allCoveredPoints = new List<Point>();
+
+			foreach(var line in _lineSegments)
+			{
+				allCoveredPoints = allCoveredPoints.Concat(line.CoveredPoints).ToList();
+			}
+
+			return Overlaps(allCoveredPoints);
+		}
+
+		public int OverlapsStraightOnly()
 		{
 			var straighLines = _lineSegments.Where(x => x.IsStraight).ToList();
 
@@ -57,20 +69,25 @@ namespace AdventOfCode2021.Day5
 				allCoveredPoints = allCoveredPoints.Concat(line.CoveredPoints).ToList();
 			}
 
+			return Overlaps(allCoveredPoints);
+		}
+
+		private int Overlaps(List<Point> points)
+		{
 			var grid = new int[BottomRight.X + 1, BottomRight.Y + 1];
 			var overlapsFound = 0;
 
-			foreach(var point in allCoveredPoints)
+			foreach (var point in points)
 			{
 				grid[point.X, point.Y]++;
 			}
 
 			/* find all elements marked at least twice */
-			for(int row = 0; row < BottomRight.X + 1; row++)
+			for (int row = 0; row < BottomRight.X + 1; row++)
 			{
-				for(int column = 0; column < BottomRight.Y + 1; column++)
+				for (int column = 0; column < BottomRight.Y + 1; column++)
 				{
-					if(grid[row, column] >= 2)
+					if (grid[row, column] >= 2)
 					{
 						overlapsFound++;
 					}
@@ -79,5 +96,5 @@ namespace AdventOfCode2021.Day5
 
 			return overlapsFound;
 		}
-	}
+	}	
 }
