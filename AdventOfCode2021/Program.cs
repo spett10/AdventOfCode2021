@@ -22,14 +22,22 @@ namespace AdventOfCode2021
 		private static void Day6()
 		{
 			var testData = new Input(@"Day6/testdata.txt").GetSplitInt<List<int>>();
-			var testLanternFish = new LanternFish(testData);
-			var testDataFishCount = testLanternFish.SimulateDaysAndCountFish(80);
+			var testLanternFish = new OptimizedLanternFish(testData);
+			var testDataFishCount = testLanternFish.SimulateDaysAndCount(80);
 			Console.WriteLine($"test data fish count: {testDataFishCount}");
 
 			var input = new Input(@"Day6/input.txt").GetSplitInt<List<int>>();
-			var lanternFish = new LanternFish(input);
-			var fishCount = lanternFish.SimulateDaysAndCountFish(80);
+			var lanternFish = new OptimizedLanternFish(input);
+			var fishCount = lanternFish.SimulateDaysAndCount(80);
 			Console.WriteLine($"fish count: {fishCount}");
+
+			var testLanternFishForever = new OptimizedLanternFish(testData);
+			var testForeverCount = testLanternFishForever.SimulateDaysAndCount(256);
+			Console.WriteLine($"test forever count: {testForeverCount}");
+
+			var lanternFishForever = new OptimizedLanternFish(input);
+			var foreverCount = lanternFishForever.SimulateDaysAndCount(256);
+			Console.WriteLine($"forever count: {foreverCount}");
 		}
 
 		private static void Day5()
