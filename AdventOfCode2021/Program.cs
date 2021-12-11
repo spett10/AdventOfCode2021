@@ -2,6 +2,7 @@
 using AdventOfCode2021.Day2;
 using AdventOfCode2021.Day3;
 using AdventOfCode2021.Day4;
+using AdventOfCode2021.Day5;
 using System;
 using System.Collections.Generic;
 
@@ -9,9 +10,25 @@ namespace AdventOfCode2021
 {
 	class Program
 	{
+
+		// TODO: make the below test cases? So we can refactor without regressing. If we ever bother. 
+
 		static void Main(string[] args)
 		{
-			Day4();
+			Day5();
+		}
+
+		private static void Day5()
+		{
+			var testdata = new Input(@"Day5/testdata.txt").GetLinesString<List<string>>();
+			var testDiagram = new Diagram(testdata);
+			var testdataOverlappingPoints = testDiagram.Overlaps();
+			Console.WriteLine($"test data overlapping points : {testdataOverlappingPoints}");
+
+			var input = new Input(@"Day5/input.txt").GetLinesString<List<string>>();
+			var diagram = new Diagram(input);
+			var overlappingPoints = diagram.Overlaps();
+			Console.WriteLine($"overlapping points : {overlappingPoints}");
 		}
 
 		private static void Day4()
