@@ -31,6 +31,19 @@ namespace AdventOfCode2021.Day7
 			}
 		}
 
+		public int CheapestCostNotConstantRate()
+		{
+			int lowestCost = int.MaxValue;
+
+			for(int i = 0; i <= MaxPosition; i++)
+			{
+				var currentCost = CostOfPositionVaryingFuelRate(i);
+				if (currentCost < lowestCost) lowestCost = currentCost;
+			}
+
+			return lowestCost;
+		}
+
 		public int CheapestCost()
 		{
 			int lowestCost = int.MaxValue;
@@ -42,6 +55,22 @@ namespace AdventOfCode2021.Day7
 			}
 
 			return lowestCost;
+		}
+
+		private int CostOfPositionVaryingFuelRate(int aligningPosition)
+		{
+			int cost = 0;
+			foreach(var pos in positions)
+			{
+				int distance = Math.Abs(aligningPosition - pos.Key);
+
+				for(int i = 1; i <= distance; i++)
+				{
+					cost += (i * pos.Value);
+				}
+			}
+
+			return cost;
 		}
 
 		private int CostOfPosition(int aligningPosition)

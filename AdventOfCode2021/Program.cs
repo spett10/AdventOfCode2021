@@ -19,7 +19,7 @@ namespace AdventOfCode2021
 		{
 			Day7();
 		}
-
+					
 		private static void Day7()
 		{
 			var testData = new Input(@"Day7/testdata.txt").GetSplitInt<List<int>>();
@@ -31,6 +31,14 @@ namespace AdventOfCode2021
 			var crabAligner = new CrabAlligner(input);
 			var minimalCost = crabAligner.CheapestCost();
 			Console.WriteLine($"minimal cost: {minimalCost}");
+
+			var testVaryingCrabAligner = new CrabAlligner(testData);
+			var testMinimalCostVarying = testVaryingCrabAligner.CheapestCostNotConstantRate();
+			Console.WriteLine($"test minimal cost varying: {testMinimalCostVarying}");
+
+			var varyingCrabAligner = new CrabAlligner(input);
+			var minimalCostVarying = varyingCrabAligner.CheapestCostNotConstantRate();
+			Console.WriteLine($"minimal cost varying: {minimalCostVarying}");
 		}
 
 		private static void Day6()
