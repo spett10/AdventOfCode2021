@@ -4,6 +4,7 @@ using AdventOfCode2021.Day3;
 using AdventOfCode2021.Day4;
 using AdventOfCode2021.Day5;
 using AdventOfCode2021.Day6;
+using AdventOfCode2021.Day7;
 using System;
 using System.Collections.Generic;
 
@@ -16,7 +17,20 @@ namespace AdventOfCode2021
 
 		static void Main(string[] args)
 		{
-			Day6();
+			Day7();
+		}
+
+		private static void Day7()
+		{
+			var testData = new Input(@"Day7/testdata.txt").GetSplitInt<List<int>>();
+			var testCrabAligner = new CrabAlligner(testData);
+			var testMinimalCost = testCrabAligner.CheapestCost();
+			Console.WriteLine($"Test data minimal cost: {testMinimalCost}");
+
+			var input = new Input(@"Day7/input.txt").GetSplitInt<List<int>>();
+			var crabAligner = new CrabAlligner(input);
+			var minimalCost = crabAligner.CheapestCost();
+			Console.WriteLine($"minimal cost: {minimalCost}");
 		}
 
 		private static void Day6()
