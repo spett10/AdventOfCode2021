@@ -1,4 +1,5 @@
 ﻿using AdventOfCode2021.Day1;
+using AdventOfCode2021.Day10;
 using AdventOfCode2021.Day2;
 using AdventOfCode2021.Day3;
 using AdventOfCode2021.Day4;
@@ -18,9 +19,23 @@ namespace AdventOfCode2021
 
 		static void Main(string[] args)
 		{
-			Day9();
+			Day10();
 		}
 					
+		private static void Day10()
+		{
+			var testData = new Input(@"Day10/testdata.txt").GetLinesString<List<string>>();
+			var testSyntaxScorer = new SyntaxScorer(testData);
+			var testScore = testSyntaxScorer.SyntaxCheck();
+			Console.WriteLine($"test score syntax check: {testScore}");
+
+			var input = new Input(@"Day10/input.txt").GetLinesString<List<string>>();
+			var syntaxScorer = new SyntaxScorer(input);
+			var score = syntaxScorer.SyntaxCheck();
+			Console.WriteLine($"syntax score: {score}");
+
+		}
+
 		private static void Day9()
 		{
 			var testData = new Input(@"Day9/testdata.txt").GetLinesString<List<string>>();
