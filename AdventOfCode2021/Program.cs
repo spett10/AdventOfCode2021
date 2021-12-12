@@ -25,13 +25,21 @@ namespace AdventOfCode2021
 		{
 			var testData = new Input(@"Day9/testdata.txt").GetLinesString<List<string>>();
 			var testHeatMap = new Heatmap(testData);
-			var testRiskScore = testHeatMap.FindLowPoints();
+			var testRiskScore = testHeatMap.LowPointRiskLevel();
 			Console.WriteLine($"Test data risk score: {testRiskScore}");
 
 			var input = new Input(@"Day9/input.txt").GetLinesString<List<string>>();
 			var heatmap = new Heatmap(input);
-			var riskScore = heatmap.FindLowPoints();
+			var riskScore = heatmap.LowPointRiskLevel();
 			Console.WriteLine($"risk score: {riskScore}");
+
+			var testheatmapForBasin = new Heatmap(testData);
+			var testBasinScore = testheatmapForBasin.FindBasins();
+			Console.WriteLine($"test data basin score: {testBasinScore}");
+
+			var heatMapForBasin = new Heatmap(input);
+			var basinScore = heatMapForBasin.FindBasins();
+			Console.WriteLine($"basin score: {basinScore}");
 		}
 
 		private static void Day7()
