@@ -5,6 +5,7 @@ using AdventOfCode2021.Day4;
 using AdventOfCode2021.Day5;
 using AdventOfCode2021.Day6;
 using AdventOfCode2021.Day7;
+using AdventOfCode2021.Day9;
 using System;
 using System.Collections.Generic;
 
@@ -17,9 +18,22 @@ namespace AdventOfCode2021
 
 		static void Main(string[] args)
 		{
-			Day7();
+			Day9();
 		}
 					
+		private static void Day9()
+		{
+			var testData = new Input(@"Day9/testdata.txt").GetLinesString<List<string>>();
+			var testHeatMap = new Heatmap(testData);
+			var testRiskScore = testHeatMap.FindLowPoints();
+			Console.WriteLine($"Test data risk score: {testRiskScore}");
+
+			var input = new Input(@"Day9/input.txt").GetLinesString<List<string>>();
+			var heatmap = new Heatmap(input);
+			var riskScore = heatmap.FindLowPoints();
+			Console.WriteLine($"risk score: {riskScore}");
+		}
+
 		private static void Day7()
 		{
 			var testData = new Input(@"Day7/testdata.txt").GetSplitInt<List<int>>();
