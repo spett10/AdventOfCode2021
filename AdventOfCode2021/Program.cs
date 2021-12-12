@@ -34,6 +34,13 @@ namespace AdventOfCode2021
 			var score = syntaxScorer.SyntaxCheck();
 			Console.WriteLine($"syntax score: {score}");
 
+			var testAutoComplete = new SyntaxScorer(testData);
+			var testAutoCompleteScore = testAutoComplete.AutoComplete();
+			Console.WriteLine($"test auto complete: {testAutoCompleteScore}");
+
+			var autoComplete = new SyntaxScorer(input);
+			var autoCompleteScore = autoComplete.AutoComplete();
+			Console.WriteLine($"auto complete score: {autoCompleteScore}");
 		}
 
 		private static void Day9()
