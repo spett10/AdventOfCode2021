@@ -1,5 +1,6 @@
 ﻿using AdventOfCode2021.Day1;
 using AdventOfCode2021.Day10;
+using AdventOfCode2021.Day11;
 using AdventOfCode2021.Day2;
 using AdventOfCode2021.Day3;
 using AdventOfCode2021.Day4;
@@ -19,9 +20,23 @@ namespace AdventOfCode2021
 
 		static void Main(string[] args)
 		{
-			Day10();
+			Day11();
 		}
-					
+		
+		private static void Day11()
+		{
+			var testData = new Input(@"Day11/testdata.txt").GetLinesString<List<string>>();
+			var testOctipiCave = new CavernOfOctopi(testData);
+			var testScore = testOctipiCave.FlashCountAfterDays(100);
+			Console.WriteLine($"test score 100 days: {testScore}");
+
+
+			var input = new Input(@"Day11/input.txt").GetLinesString<List<string>>();
+			var octipiCave = new CavernOfOctopi(input);
+			var score = octipiCave.FlashCountAfterDays(100);
+			Console.WriteLine($"score after 100 days: {score}");
+		}
+
 		private static void Day10()
 		{
 			var testData = new Input(@"Day10/testdata.txt").GetLinesString<List<string>>();
