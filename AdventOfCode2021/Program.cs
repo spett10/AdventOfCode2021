@@ -35,6 +35,14 @@ namespace AdventOfCode2021
 			var octipiCave = new CavernOfOctopi(input);
 			var score = octipiCave.FlashCountAfterDays(100);
 			Console.WriteLine($"score after 100 days: {score}");
+
+			var testAllFlashingCave = new CavernOfOctopi(testData);
+			var testDaysUntilAllFlashed = testAllFlashingCave.FirstDayWhereAllFlash();
+			Console.WriteLine($"test days before all flashed: {testDaysUntilAllFlashed}");
+
+			var allFlashingCave = new CavernOfOctopi(input);
+			var daysUntilAllFlash = allFlashingCave.FirstDayWhereAllFlash();
+			Console.WriteLine($"days until all flash {daysUntilAllFlash}");
 		}
 
 		private static void Day10()

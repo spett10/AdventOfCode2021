@@ -90,6 +90,28 @@ namespace AdventOfCode2021.Day11
 			return _flashCount;
 		}
 
+		public int FirstDayWhereAllFlash()
+		{
+			int days = 0;
+
+			while (!DidAllJustFlash())
+			{
+				var hasFlashedThisDay = new HashSet<Tuple<int, int>>();
+
+				AdvanceDay();
+				days++;
+
+				while (CanAnyFlash(hasFlashedThisDay))
+				{
+					TryFlashAll(hasFlashedThisDay);
+				}
+
+				ResetAllThatFlashed(hasFlashedThisDay);
+			}
+
+			return days;
+		}
+
 		private void FlashCount()
 		{
 			_flashCount++;
@@ -270,6 +292,23 @@ namespace AdventOfCode2021.Day11
 			}
 
 			return false;
+		}
+
+		// assummes we have set all to zero
+		private bool DidAllJustFlash()
+		{
+			for(int row = 0; row < _rows; row++)
+			{
+				for(int column = 0; column < _columns; column++)
+				{
+					if (_energyLevels[row, column] != 0)
+					{
+						return false;
+					}
+				}
+			}
+
+			return true;
 		}
 
 		private void IncrementUpperLeft(int row, int column) => _energyLevels[row - 1, column - 1] += 1;
