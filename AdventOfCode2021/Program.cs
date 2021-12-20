@@ -7,6 +7,7 @@ using AdventOfCode2021.Day4;
 using AdventOfCode2021.Day5;
 using AdventOfCode2021.Day6;
 using AdventOfCode2021.Day7;
+using AdventOfCode2021.Day8;
 using AdventOfCode2021.Day9;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace AdventOfCode2021
 
 		static void Main(string[] args)
 		{
-			Day11();
+			Day8();
 		}
 		
 		private static void Day11()
@@ -85,6 +86,32 @@ namespace AdventOfCode2021
 			var heatMapForBasin = new Heatmap(input);
 			var basinScore = heatMapForBasin.FindBasins();
 			Console.WriteLine($"basin score: {basinScore}");
+		}
+
+		private static void Day8()
+		{
+			var testData = new Input(@"Day8/testdata.txt").GetLinesString<List<string>>();
+			var testDecoder = new DigitDecoder(testData);
+			var testCount = testDecoder.CountEasyDigits();
+			Console.WriteLine($"Test count {testCount}");
+
+			var input = new Input(@"Day8/input.txt").GetLinesString<List<string>>();
+			var decoder = new DigitDecoder(input);
+			var count = decoder.CountEasyDigits();
+			Console.WriteLine($"Count: {count}");
+
+			var singleExampleInput = new Input(@"Day8/singleExample.txt").GetLinesString<List<string>>();
+			var singeExampleDecoder = new DigitDecoder(singleExampleInput);
+			var singleExampleScore = singeExampleDecoder.Decode();
+			Console.WriteLine($"part 2 single example test score: {singleExampleScore}");
+
+			var testDataDecoder = new DigitDecoder(testData);
+			var testPart2Score = testDataDecoder.Decode();
+			Console.WriteLine($"part 2 test data score: {testPart2Score}");
+
+			var dataDecoder = new DigitDecoder(input);
+			var part2Score = dataDecoder.Decode();
+			Console.WriteLine($"part 2 score: {part2Score}");
 		}
 
 		private static void Day7()
